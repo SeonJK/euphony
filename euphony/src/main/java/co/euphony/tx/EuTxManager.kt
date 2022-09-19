@@ -14,7 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class EuTxManager {
+class EuTxManager private constructor() {
     private val txCore: EuNativeConnector = EuNativeConnector.getInstance()
     private var audioTrack: AudioTrack? = null
     private var playerEngineType: PlayerEngine? = null
@@ -28,6 +28,14 @@ class EuTxManager {
         set(data) {
             txCore.code = data
         }
+
+    companion object {
+        val instance: EuTxManager by lazy { Holder.INSTANCE }
+    }
+
+    private object Holder {
+        val INSTANCE = EuTxManager()
+    }
 
     enum class EuPIDuration {
         LENGTH_SHORT, LENGTH_LONG, LENGTH_FOREVER

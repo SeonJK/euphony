@@ -21,13 +21,13 @@ This consists of two parts.
 - Java
 
 ```java
-EuTxManager mTxManager = new EuTxManager();
+EuTxManager mTxManager = EuTxManager.Companion.getInstance();
 ```
 
 - Kotlin
 
 ```kotlin
-val mTxManager = EuTxManager()
+val mTxManager = EuTxManager.instance
 ```
 
 2. **Use setCode method, enter the data you want to transmit.**
